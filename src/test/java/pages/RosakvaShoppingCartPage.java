@@ -26,7 +26,6 @@ public class RosakvaShoppingCartPage {
     public RosakvaShoppingCartPage clearCart() {
         while (itemsTable.isDisplayed()) {
             itemsDeleteButtons.first().click();
-            sleep(1000);
         }
 
         return this;
