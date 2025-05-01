@@ -16,7 +16,7 @@ public class RosakvaFavouritesPage {
     private final ElementsCollection itemsNames = $(".table-revolution tbody")
             .$$("tr td.text-left");
     private final ElementsCollection itemsDeleteButtons = $(".table-revolution tbody")
-            .$$("tr td [data-original-title=Удалить]");
+            .$$(".fa-trash-o");
 
     @Step("Открыть избранное")
     public RosakvaFavouritesPage openPage() {
@@ -27,8 +27,11 @@ public class RosakvaFavouritesPage {
 
     @Step("Очистить избранное")
     public RosakvaFavouritesPage clearFavourites() {
-        while (itemsTable.isDisplayed()) {
-            itemsDeleteButtons.first().click();
+        if (itemsTable.isDisplayed()) {
+            int itemsCount = itemsDeleteButtons.size();
+            for (int i = 0; i < itemsCount; ++i) {
+                itemsDeleteButtons.first().click();
+            }
         }
 
         return this;

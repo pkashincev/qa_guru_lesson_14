@@ -24,10 +24,12 @@ public class RosakvaShoppingCartPage {
 
     @Step("Очистить корзину")
     public RosakvaShoppingCartPage clearCart() {
-        while (itemsTable.isDisplayed()) {
-            itemsDeleteButtons.first().click();
+        if (itemsTable.isDisplayed()) {
+            int itemsCount = itemsDeleteButtons.size();
+            for (int i = 0; i < itemsCount; ++i) {
+                itemsDeleteButtons.first().click();
+            }
         }
-
         return this;
     }
 
